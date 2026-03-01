@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Dada!</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #00ff41;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Horizontal container for heart column and guy */
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* Vertical column for I, Heart, and U */
+        .heart-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        pre {
+            font-size: 18px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .letter {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Birthday!!!</h1>
+
+    <div class="main-layout">
+        <!-- Vertical Stack: I, Heart, U -->
+        <div class="heart-column">
+            <div class="letter">I</div>
+            <pre>
+ ___ ___
+ /   V   \
+ \       /
+ \     /
+ \___/
+            </pre>
+            <div class="letter">U</div>
+        </div>
+
+        <!-- Animated Character -->
+        <pre id="ascii-display"></pre>
+    </div>
+    <script>
+        const frames = [
+            `
+  ( ^ ^ ) \\()/
+   --o--   ||
+           /\\
+            `,
+            `
+  ( o o )  ()
+   --o--  /||\\
+           /\\
+            `
+        ];
+
+        let currentFrame = 0;
+        const display = document.getElementById('ascii-display');
+
+        function updateAnimation() {
+            // Update the text inside the <pre> tag
+            display.textContent = frames[currentFrame];
+            
+            // Increment frame and loop back to 0 at the end
+            currentFrame = (currentFrame + 1) % frames.length;
+        }
+
+        // 2. Set the speed (e.g., 200 milliseconds per frame)
+        setInterval(updateAnimation, 250);
+
+        // Initialize the first frame immediately
+        updateAnimation();
+    </script>
+</body>
+</html>
